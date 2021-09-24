@@ -13,6 +13,7 @@ import { CheckoutComponent } from './componants/checkout/checkout.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { HttpClientModule } from '@angular/common/http';
 import {ListproductComponent} from "./componants/listproduct/listproduct.component";
+import {FormsModule} from "@angular/forms";
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +33,7 @@ import {ListproductComponent} from "./componants/listproduct/listproduct.compone
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
