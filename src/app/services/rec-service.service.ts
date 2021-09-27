@@ -10,6 +10,8 @@ export class RecServiceService {
   constructor(public  http:HttpClient) { }
 
   getRecommendation(id:any){
+    console.log(Environment.hostRec+'/Rec?='+id)
     return this.http.get(Environment.hostRec+'/Rec?='+id)
   }
+
 }

@@ -8,6 +8,7 @@ import { ProductComponent } from './componants/product/product.component';
 import { ThankyouComponent } from './componants/thankyou/thankyou.component';
 import { CheckoutComponent } from './componants/checkout/checkout.component';
 import {ListproductComponent} from "./componants/listproduct/listproduct.component";
+import {LoginComponent} from "./componants/login/login.component";
 const routes: Routes = [
   {
     path:'', component : HomeComponent
@@ -29,6 +30,9 @@ const routes: Routes = [
   },
   {
     path:'listproduct/:cat' , component:ListproductComponent
+  },
+  {
+    path:'login',component:LoginComponent
   }
 ];
 

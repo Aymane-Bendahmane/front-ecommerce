@@ -17,9 +17,9 @@ export class ProductComponent implements OnInit {
   host = Environment.host
   public ratings: any;
   private linkRating: any;
+  public recArticles = new Array()
 
-
-  constructor(private rt: ActivatedRoute, private service: ManagerService, public caddy: CaddyService, public recService: RecServiceService) {
+  constructor(private rt: ActivatedRoute, public service: ManagerService, public caddy: CaddyService, public recService: RecServiceService) {
   }
 
   ngOnInit(): void {
@@ -53,15 +53,36 @@ export class ProductComponent implements OnInit {
   }
 
   getRecommendations(id: any) {
+    this.recArticles = new Array()
     this.recService.getRecommendation(id).subscribe(data => {
 
       // @ts-ignore
-     let r =  Array(data["Correlation"])
-       console.log(r)
-      /*r.map(c=>{
-        console.log(c.key)
-      })*/
+      let r = Array(data["Correlation"])
+      // @ts-ignore
+      let c = Object.entries(data["Correlation"])
+      let it = c.values();
+      c.forEach(c => {
+        let array = it.next().value
+        if (id != array[0]) {
+          this.service.getArticleById(array[0]).subscribe(data => {
+            this.addDAtaToarray(data)
+          })
+        }
+      })
     })
 
+  }
+
+  addDAtaToarray(data: any) {
+    this.recArticles?.push(data)
+  }
+
+  addToCaddy(article: any) {
+    console.log("clicked add to card")
+    this.caddy.addProductToCAddyWithQuantity(article, 1)
+  }
+
+  gotToArticle(id: any) {
+    this.service.goArticle(id)
   }
 }

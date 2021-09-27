@@ -14,6 +14,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { HttpClientModule } from '@angular/common/http';
 import {ListproductComponent} from "./componants/listproduct/listproduct.component";
 import {FormsModule} from "@angular/forms";
+import { LoginComponent } from './componants/login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +26,7 @@ import {FormsModule} from "@angular/forms";
     ThankyouComponent,
     CheckoutComponent,
     ListproductComponent,
+    LoginComponent,
 
 
   ],
