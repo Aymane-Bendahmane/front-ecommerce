@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 import {Environment} from "./environment";
 import {Router, RouterLink} from "@angular/router";
@@ -30,5 +30,11 @@ export class ManagerService {
 
   goArticle(id:string) {
     this.r.navigateByUrl('/product/' + id)
+  }
+
+  getcommends() {
+    console.log('before commandes')
+       return this.http.get(Environment.host+'/ratings')
+
   }
 }

@@ -55,7 +55,6 @@ export class ProductComponent implements OnInit {
   getRecommendations(id: any) {
     this.recArticles = new Array()
     this.recService.getRecommendation(id).subscribe(data => {
-
       // @ts-ignore
       let r = Array(data["Correlation"])
       // @ts-ignore

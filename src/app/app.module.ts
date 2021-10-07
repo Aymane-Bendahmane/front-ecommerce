@@ -11,10 +11,11 @@ import { ProductComponent } from './componants/product/product.component';
 import { ThankyouComponent } from './componants/thankyou/thankyou.component';
 import { CheckoutComponent } from './componants/checkout/checkout.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {ListproductComponent} from "./componants/listproduct/listproduct.component";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { LoginComponent } from './componants/login/login.component';
+import {InterceptorService} from "./services/Authentication/interceptor.service";
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,9 +36,12 @@ import { LoginComponent } from './componants/login/login.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass:InterceptorService , multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
