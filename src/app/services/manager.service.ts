@@ -37,4 +37,8 @@ export class ManagerService {
        return this.http.get(Environment.host+'/ratings')
 
   }
+
+  submitOrder(order:any) {
+    return this.http.post(Environment.host+'/commandes',order)
+  }
 }

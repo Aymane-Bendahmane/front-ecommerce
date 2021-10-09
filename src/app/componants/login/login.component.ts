@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
   onLogin() {
     console.log(this.login.value)
     this.authService.Login(this.login.value).subscribe(data=>{
+      this.authService.isLogin = true
       // @ts-ignore
       let ref = data['refresh-token']
       // @ts-ignore

@@ -25,6 +25,12 @@ export class HomeComponent implements OnInit {
       this.articles = data
     })
   }
+  getCommends(){
 
+    this.service.getcommends().subscribe(data=>{
+      console.log('comandes')
+      console.log(data)
+    })
+  }
 
 }

@@ -3,6 +3,7 @@ import {Router, RouterLink} from "@angular/router";
 import {CaddyService} from "../../services/caddy.service";
 import {Environment} from "../../services/environment";
 import {Caddy} from "../Model/Caddy";
+import {AuthServiceService} from "../../services/Authentication/auth-service.service";
 
 @Component({
   selector: 'app-header',
@@ -12,7 +13,7 @@ import {Caddy} from "../Model/Caddy";
 export class HeaderComponent implements OnInit {
     public c: Caddy | any;
 
-  constructor(private r: Router, public caddy: CaddyService) {
+  constructor(private r: Router, public caddy: CaddyService,public lg:AuthServiceService) {
   }
 
   categories = ["laptops", "smartphones", "cameras", "Accessories"]
@@ -33,5 +34,9 @@ export class HeaderComponent implements OnInit {
 
   deleteCAddy(id: any) {
     this.caddy.removeFromCaddy(id)
+  }
+
+  logout() {
+    this.lg.Logout()
   }
 }

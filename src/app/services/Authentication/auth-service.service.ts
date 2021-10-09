@@ -37,6 +37,12 @@ export class AuthServiceService {
       this.isLogin = true
   }
 
+  public isUserloged(){
+    if( localStorage.getItem('refresh-token') && localStorage.getItem('access-token') ){
+      return true;
+    }else return false
+
+  }
   refreshToken(l:any) {
     let headers =
       {
@@ -60,8 +66,14 @@ export class AuthServiceService {
     return (JSON.parse(<string>acc))
   }
   getRefreshToken(){
-    let  acc:string | null = localStorage.getItem('refresh-token')
-    return (JSON.parse(<string>acc))
+    let  acc = localStorage.getItem('refresh-token')
+
+    if (acc != null){
+      return (JSON.parse(<string>acc))
+      console.log('see me :' + acc)
+    }
+
+    return null;
   }
 
 
