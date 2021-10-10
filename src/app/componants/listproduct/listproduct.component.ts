@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {ManagerService} from "../../services/manager.service";
+import {ManagerService} from "../../services/ManagerService/manager.service";
 import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {Environment} from "../../services/environment";
-import {CaddyService} from "../../services/caddy.service";
+import {CaddyService} from "../../services/CaddyService/caddy.service";
 
 @Component({
   selector: 'app-listproduct',

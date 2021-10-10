@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {ManagerService} from "../../services/manager.service";
+import {ManagerService} from "../../services/ManagerService/manager.service";
 import {Environment} from "../../services/environment";
 import {Caddy} from "../Model/Caddy";
-import {CaddyService} from "../../services/caddy.service";
+import {CaddyService} from "../../services/CaddyService/caddy.service";
 import {NgForm} from '@angular/forms';
-import {RecServiceService} from "../../services/rec-service.service";
+import {RecServiceService} from "../../services/RecSysService/rec-service.service";
 
 @Component({
   selector: 'app-product',

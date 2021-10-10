@@ -25,36 +25,14 @@
     <!-- row -->
     <div class="row">
 
-      <div class="col-md-7">
+      <div class="col-md-7" *ngIf="!auth.isUserloged()">
         <!-- Billing Details -->
         <div class="billing-details">
           <div class="section-title">
-            <h3 class="title">Billing address</h3>
+            <h3 class="title">Connect to finish</h3>
           </div>
-          <div class="form-group">
-            <input class="input" type="text" name="first-name" placeholder="First Name">
-          </div>
-          <div class="form-group">
-            <input class="input" type="text" name="last-name" placeholder="Last Name">
-          </div>
-          <div class="form-group">
-            <input class="input" type="email" name="email" placeholder="Email">
-          </div>
-          <div class="form-group">
-            <input class="input" type="text" name="address" placeholder="Address">
-          </div>
-          <div class="form-group">
-            <input class="input" type="text" name="city" placeholder="City">
-          </div>
-          <div class="form-group">
-            <input class="input" type="text" name="country" placeholder="Country">
-          </div>
-          <div class="form-group">
-            <input class="input" type="text" name="zip-code" placeholder="ZIP Code">
-          </div>
-          <div class="form-group">
-            <input class="input" type="tel" name="tel" placeholder="Telephone">
-          </div>
+
+
           <div class="form-group">
             <div class="input-checkbox">
               <input type="checkbox" id="create-account">
@@ -62,16 +40,54 @@
                 <span></span>
                 Create Account?
               </label>
+
               <div class="caption">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
-                <input class="input" type="password" name="password" placeholder="Enter Your Password">
+                <form [formGroup]="creating" (ngSubmit)="createUser()">
+                  <div class="form-group">
+                    <input class="input" type="text" name="nom" placeholder="First Name" formControlName="nom">
+                  </div>
+                  <div class="form-group">
+                    <input class="input" type="text" name="prenom" placeholder="Last Name" formControlName="prenom">
+                  </div>
+                  <div class="form-group">
+                    <input class="input" type="email" name="email" placeholder="Email" formControlName="email">
+                  </div>
+                  <div class="form-group">
+                    <input class="input" type="text" name="userAddress" placeholder="Address"
+                           formControlName="userAddress">
+                  </div>
+                  <div class="form-group">
+                    <input class="input" type="text" name="phone" placeholder="phone" formControlName="phone">
+                  </div>
+                  <div class="form-group">
+                    <input class="input" type="text" name="userLogin" placeholder="username"
+                           formControlName="userLogin">
+                  </div>
+                  <div class="form-group">
+                    <select class="form-select" name="sexe" formControlName="sexe">
+                      <option selected>No gender</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                    </select>
+                  </div>
+                  <input class="input" type="password" name="userPassword" placeholder="Enter Your Password"
+                         formControlName="userPassword">
+                  <button type="submit" class="primary-btn order-submit">Create Account</button>
+
+                </form>
+
               </div>
             </div>
           </div>
+
+          <label>
+            <input type="checkbox" routerLink="/login">
+            <span></span>
+            Already have an account?
+          </label>
         </div>
         <!-- /Billing Details -->
-
-        <!-- Shiping Details -->
+        <!-- Shiping Details
         <div class="shiping-details">
           <div class="section-title">
             <h3 class="title">Shiping address</h3>
@@ -110,12 +126,10 @@
             </div>
           </div>
         </div>
-        <!-- /Shiping Details -->
+        Shiping Details -->
 
         <!-- Order notes -->
-        <div class="order-notes">
-          <textarea class="input" placeholder="Order Notes"></textarea>
-        </div>
+
         <!-- /Order notes -->
       </div>
 
@@ -131,8 +145,8 @@
           </div>
           <div class="order-products">
             <div class="order-col" *ngFor="let i of caddy.caddy.items|keyvalue">
-              <div class="product-img" >
-                <img height="60" width="60"  src="{{host+'/photoProduct/'+i.value.product.id}}" alt="">
+              <div class="product-img">
+                <img height="60" width="60" src="{{host+'/photoProduct/'+i.value.product.id}}" alt="">
               </div>
               <div>{{i.value.quantity}}x {{i.value.product.name}}</div>
               <div>{{i.value.quantity * i.value.product.price |currency:"$"}}</div>
@@ -147,6 +161,7 @@
             <div><strong class="order-total">{{caddy.getTotal() |currency:"$"}}</strong></div>
           </div>
         </div>
+        <!--
         <div class="payment-method">
           <div class="input-radio">
             <input type="radio" name="payment" id="payment-1">
@@ -178,7 +193,7 @@
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
             </div>
           </div>
-        </div>
+        </div>-->
         <div class="input-checkbox">
           <input type="checkbox" id="terms">
           <label for="terms">
@@ -186,7 +201,15 @@
             I've read and accept the <a href="#">terms & conditions</a>
           </label>
         </div>
-        <a (click)="submitOrder()" class="primary-btn order-submit">Place order</a>
+        <form #f=ngForm (ngSubmit)="submitOrder(f)">
+          <div class="form-group">
+            <div class="order-notes" *ngIf="auth.isUserloged()">
+              <textarea class="input" placeholder="Order Notes" ngModel name="description"></textarea>
+            </div>
+          </div>
+          <button  class="primary-btn order-submit">Place order</button>
+        </form>
+
       </div>
       <!-- /Order Details -->
     </div>

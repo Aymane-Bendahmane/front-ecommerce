@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router, RouterLink} from "@angular/router";
-import {CaddyService} from "../../services/caddy.service";
+import {CaddyService} from "../../services/CaddyService/caddy.service";
 import {Environment} from "../../services/environment";
 import {Caddy} from "../Model/Caddy";
 import {AuthServiceService} from "../../services/Authentication/auth-service.service";

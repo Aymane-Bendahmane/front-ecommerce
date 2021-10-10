@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {ProductItem} from "../componants/Model/Product.item";
-import {Product} from "../componants/Model/Product";
-import {Caddy} from "../componants/Model/Caddy";
+import {ProductItem} from "../../componants/Model/Product.item";
+import {Product} from "../../componants/Model/Product";
+import {Caddy} from "../../componants/Model/Caddy";
 import {Observable} from "rxjs";
 
 @Injectable({
@@ -26,6 +26,10 @@ export class CaddyService {
       this.caddy.items.forEach((it, n) => {
         console.log(it.product?.id)
       })
+    }else {
+      console.log('reseting caddy')
+      this.caddy = new Caddy(this.currentCaddyName);
+      this.calculating_nb_Items()
     }
   }
 
@@ -94,5 +98,9 @@ export class CaddyService {
     return this.caddy
   }
 
+  clearCaddy(){
+    localStorage.removeItem('caddy')
+    this.readFromLocalStorage()
+  }
 
 }

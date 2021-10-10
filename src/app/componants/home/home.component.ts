@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {ManagerService} from "../../services/manager.service";
+import {ManagerService} from "../../services/ManagerService/manager.service";
 import {Environment} from "../../services/environment";
 import {Router} from "@angular/router";
+import {CaddyService} from "../../services/CaddyService/caddy.service";
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,7 @@ export class HomeComponent implements OnInit {
   host=Environment.host
   categories=["laptops","smartphones","cameras","Accessories"]
 
-  constructor(public service:ManagerService,private r:Router) { }
+  constructor(public service:ManagerService,private r:Router,public caddy:CaddyService) { }
 
   ngOnInit(): void {
     this.get5firstArticles('laptops')

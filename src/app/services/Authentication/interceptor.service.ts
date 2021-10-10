@@ -18,7 +18,7 @@ export class InterceptorService implements HttpInterceptor {
     console.log('*********************** the interceptor has began ***********************')
     const token = this.auth.getAccessToken();
 
-    if (token != null && !req.url.includes('RefreshToken') ) {
+    if (token != null && !req.url.includes('RefreshToken') && !req.url.includes('userrs') ) {
 
       req = this.addTokenHeader(req,token)
       console.log('request with token')
@@ -33,7 +33,7 @@ export class InterceptorService implements HttpInterceptor {
       if (error instanceof HttpErrorResponse && error.status === 401 || error.status === 403 ) {
         console.log('refreshing after error')
         return this.handle401Error(req, next);
-      } else {
+      } else if(!req.url.includes('Rec')) {
         this.auth.Logout()
         return throwError(error);
       }

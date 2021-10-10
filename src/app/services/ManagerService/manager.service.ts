@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 
-import {Environment} from "./environment";
+import {Environment} from "../environment";
 import {Router, RouterLink} from "@angular/router";
 
 @Injectable({
@@ -39,6 +39,13 @@ export class ManagerService {
   }
 
   submitOrder(order:any) {
-    return this.http.post(Environment.host+'/commandes',order)
+    return this.http.post(Environment.host+'/createCommande',order)
+  }
+
+  createUser(value: any) {
+    return this.http.post(Environment.host+'/createUser',value)
+  }
+  profile(){
+    return this.http.get(Environment.host+'/profile')
   }
 }
