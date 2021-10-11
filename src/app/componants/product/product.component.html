@@ -143,13 +143,9 @@
                 <div class="col-md-3">
                   <div id="rating">
                     <div class="rating-avg">
-                      <span>4.5</span>
+                      <span>{{averageRating}}</span>
                       <div class="rating-stars">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-o"></i>
+                        <i class="fa fa-star" *ngFor="let i of counter(averageRating)"></i>
                       </div>
                     </div>
                     <ul class="rating">
@@ -257,14 +253,12 @@
                 <!-- Review Form -->
                 <div class="col-md-3">
                   <div id="review-form">
-                    <form class="review-form">
-                      <input class="input" type="text" placeholder="Your Name">
-                      <input class="input" type="email" placeholder="Your Email">
-                      <textarea class="input" placeholder="Your Review"></textarea>
+                    <form class="review-form" #f=ngForm (ngSubmit)="submitRating(f)">
+                      <textarea class="input" placeholder="Your Review" name="review" ngModel></textarea>
                       <div class="input-rating">
                         <span>Your Rating: </span>
                         <div class="stars">
-                          <input id="star5" name="rating" value="5" type="radio"><label for="star5"></label>
+                          <input id="star5" name="rating" value="5" type="radio" ><label for="star5"></label>
                           <input id="star4" name="rating" value="4" type="radio"><label for="star4"></label>
                           <input id="star3" name="rating" value="3" type="radio"><label for="star3"></label>
                           <input id="star2" name="rating" value="2" type="radio"><label for="star2"></label>
@@ -297,7 +291,6 @@
   <div class="container">
     <!-- row -->
     <div class="row">
-
       <div class="col-md-12">
         <div class="section-title text-center">
           <h3 class="title">Related Products</h3>

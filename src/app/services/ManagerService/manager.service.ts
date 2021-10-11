@@ -48,4 +48,8 @@ export class ManagerService {
   profile(){
     return this.http.get(Environment.host+'/profile')
   }
+
+  getAveregeRating(id:any){
+    return this.http.get(Environment.host+'/getAverageRating/'+id);
+  }
 }

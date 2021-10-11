@@ -18,6 +18,7 @@ export class ProductComponent implements OnInit {
   public ratings: any;
   private linkRating: any;
   public recArticles = new Array()
+  public averageRating: any;
 
   constructor(private rt: ActivatedRoute, public service: ManagerService, public caddy: CaddyService, public recService: RecServiceService) {
   }
@@ -26,6 +27,7 @@ export class ProductComponent implements OnInit {
     this.rt.params.subscribe(s => {
       this.getArticleById(s.id)
       this.getRecommendations(s.id)
+      this.getAverageRating(s.id)
     })
 
   }
@@ -83,5 +85,15 @@ export class ProductComponent implements OnInit {
 
   gotToArticle(id: any) {
     this.service.goArticle(id)
+  }
+  getAverageRating(id:any){
+    this.service.getAveregeRating(id).subscribe(data=>{
+      console.log(data)
+      this.averageRating = data ;
+    })
+  }
+
+  submitRating(f: NgForm | any) {
+    
   }
 }
