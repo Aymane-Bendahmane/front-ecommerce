@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {AuthServiceService} from "../../services/Authentication/auth-service.service";
 import {ManagerService} from "../../services/ManagerService/manager.service";
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ import {ManagerService} from "../../services/ManagerService/manager.service";
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService:AuthServiceService,private s:ManagerService) { }
+  constructor(private authService:AuthServiceService,private s:ManagerService,private location:Location) { }
   login = new FormGroup({
     username : new FormControl(),
     password : new FormControl()
@@ -29,6 +30,9 @@ export class LoginComponent implements OnInit {
       let acc  = data['access-token']
       localStorage.setItem('refresh-token',JSON.stringify(ref))
       localStorage.setItem('access-token',JSON.stringify(acc))
+
+      this.location.back()
+
     })
 
   }

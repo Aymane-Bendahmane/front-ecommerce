@@ -6,8 +6,6 @@ import {AuthServiceService} from "../../services/Authentication/auth-service.ser
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {Commande} from "../Model/Commande";
-import {ProductItemsV2} from "../Model/productItemsV2";
-import {Message} from "@angular/compiler/src/i18n/i18n_ast";
 
 @Component({
   selector: 'app-checkout',
@@ -50,7 +48,6 @@ export class CheckoutComponent implements OnInit {
 
       this.caddy.caddy.items.forEach((it, n) => {
         commande.productItems.push({"qt": it.quantity, "id_atyicle": n})
-
       })
 
     this.service.submitOrder(commande).subscribe(data=>{
@@ -60,11 +57,8 @@ export class CheckoutComponent implements OnInit {
       this.rt.navigateByUrl("/")
     })
     })
-
-
     //this.service.submitOrder()
   }
-
   createUser() {
     console.log(this.creating.value)
     this.service.createUser(this.creating.value).subscribe(data => {
