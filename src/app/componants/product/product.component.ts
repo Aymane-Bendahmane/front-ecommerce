@@ -65,6 +65,7 @@ export class ProductComponent implements OnInit {
       c.forEach(c => {
         let array = it.next().value
         if (id != array[0]) {
+          console.log(array[0])
           this.service.getArticleById(array[0]).subscribe(data => {
             this.addDAtaToarray(data)
           })
@@ -86,14 +87,29 @@ export class ProductComponent implements OnInit {
   gotToArticle(id: any) {
     this.service.goArticle(id)
   }
-  getAverageRating(id:any){
-    this.service.getAveregeRating(id).subscribe(data=>{
+
+  getAverageRating(id: any) {
+    this.service.getAveregeRating(id).subscribe(data => {
       console.log(data)
-      this.averageRating = data ;
+      this.averageRating = data;
     })
   }
 
-  submitRating(f: NgForm | any) {
-    
+  submitRating(f: any) {
+
+    // @ts-ignore
+    this.service.profile().toPromise(
+    ).then(data => {
+      //console.log(data)
+      f.userr = data
+      f.date = new Date();
+      f.article = this.article
+      console.log(f)
+      this.service.submitRating(f).subscribe(d => {
+        alert('Rating submited')
+
+      })
+    })
+
   }
 }

@@ -15,6 +15,7 @@ export class ListproductComponent implements OnInit {
   cat: string | undefined
   articles:any
   host=Environment.host
+
   ngOnInit(): void {
 
 
@@ -37,5 +38,13 @@ export class ListproductComponent implements OnInit {
   addToCaddy(article: any) {
     console.log("clicked add to card")
     this.caddy.addProductToCAddyWithQuantity(article,1)
+  }
+
+
+  counter(i:any){
+    this.service.getAveregeRating(i).subscribe(d =>{
+      return new Array(d)
+    })
+    return Array(0);
   }
 }

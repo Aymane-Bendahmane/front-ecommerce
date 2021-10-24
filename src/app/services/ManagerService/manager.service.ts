@@ -52,4 +52,8 @@ export class ManagerService {
   getAveregeRating(id:any){
     return this.http.get(Environment.host+'/getAverageRating/'+id);
   }
+
+  submitRating(body:any) {
+    return this.http.post(Environment.host + '/saveRating',body)
+  }
 }

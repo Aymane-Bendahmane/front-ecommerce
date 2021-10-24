@@ -70,7 +70,7 @@
           </div>
           <p>{{article.description}}</p>
 
-          <form class="add-to-cart" #f="ngForm" (submit)="caddy.addProductToCAddyWithQuantity(article,f)">
+          <form class="add-to-cart" #f="ngForm" (ngSubmit)="caddy.addProductToCAddyWithQuantity(article,f)">
             <div class="qty-label" >
               Qty
               <div class="input-number">
@@ -253,19 +253,19 @@
                 <!-- Review Form -->
                 <div class="col-md-3">
                   <div id="review-form">
-                    <form class="review-form" #f=ngForm (ngSubmit)="submitRating(f)">
-                      <textarea class="input" placeholder="Your Review" name="review" ngModel></textarea>
+                    <form class="review-form" #t=ngForm (ngSubmit)="submitRating(t.value)">
+                      <textarea class="input" placeholder="Your Review" name="comment" ngModel></textarea>
                       <div class="input-rating">
                         <span>Your Rating: </span>
                         <div class="stars">
-                          <input id="star5" name="rating" value="5" type="radio" ><label for="star5"></label>
-                          <input id="star4" name="rating" value="4" type="radio"><label for="star4"></label>
-                          <input id="star3" name="rating" value="3" type="radio"><label for="star3"></label>
-                          <input id="star2" name="rating" value="2" type="radio"><label for="star2"></label>
-                          <input id="star1" name="rating" value="1" type="radio"><label for="star1"></label>
+                          <input id="star5" name="stare" value="5" type="radio" ngModel><label for="star5"></label>
+                          <input id="star4" name="stare" value="4" type="radio" ngModel><label for="star4"></label>
+                          <input id="star3" name="stare" value="3" type="radio" ngModel><label for="star3"></label>
+                          <input id="star2" name="stare" value="2" type="radio" ngModel><label for="star2"></label>
+                          <input id="star1" name="stare" value="1" type="radio" ngModel><label for="star1"></label>
                         </div>
                       </div>
-                      <button class="primary-btn">Submit</button>
+                      <button class="primary-btn" type="submit">Submit</button>
                     </form>
                   </div>
                 </div>
