@@ -30,7 +30,10 @@ export class LoginComponent implements OnInit {
       let acc  = data['access-token']
       localStorage.setItem('refresh-token',JSON.stringify(ref))
       localStorage.setItem('access-token',JSON.stringify(acc))
-
+      this.s.profile().subscribe(data=>{
+        // @ts-ignore
+        this.authService.isAdmin(data['roles']);
+      })
       this.location.back()
 
     })

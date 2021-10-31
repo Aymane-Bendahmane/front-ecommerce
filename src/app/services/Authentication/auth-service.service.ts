@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Environment} from "../environment";
 import {catchError, mapTo, tap} from "rxjs/operators";
 import {of} from "rxjs";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class AuthServiceService {
 
   public isLogin: Boolean = false
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,private rt:Router) {
   }
 
   Login(user: any) {
@@ -75,6 +76,18 @@ export class AuthServiceService {
 
     return null;
   }
+  isAdmin(roles:any){
+    console.log(roles)
+    for (let role of roles) {
+      if(role['role'] == 'ADMIN'){
+        //this.rt.navigateByUrl()
+        // @ts-ignore
+        window.location.href='http://localhost:4300/' ;
+      }
 
+    }
+    console.log('not admin')
+    return null;
+  }
 
 }
