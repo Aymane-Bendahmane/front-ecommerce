@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {AuthServiceService} from "../../services/Authentication/auth-service.service";
 import {ManagerService} from "../../services/ManagerService/manager.service";
@@ -11,10 +11,12 @@ import {Location} from "@angular/common";
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService:AuthServiceService,private s:ManagerService,private location:Location) { }
+  constructor(private authService: AuthServiceService, private s: ManagerService, private location: Location) {
+  }
+
   login = new FormGroup({
-    username : new FormControl(),
-    password : new FormControl()
+    username: new FormControl(),
+    password: new FormControl()
   })
 
   ngOnInit(): void {
@@ -22,15 +24,15 @@ export class LoginComponent implements OnInit {
 
   onLogin() {
     console.log(this.login.value)
-    this.authService.Login(this.login.value).subscribe(data=>{
+    this.authService.Login(this.login.value).subscribe(data => {
       this.authService.isLogin = true
       // @ts-ignore
       let ref = data['refresh-token']
       // @ts-ignore
-      let acc  = data['access-token']
-      localStorage.setItem('refresh-token',JSON.stringify(ref))
-      localStorage.setItem('access-token',JSON.stringify(acc))
-      this.s.profile().subscribe(data=>{
+      let acc = data['access-token']
+      localStorage.setItem('refresh-token', JSON.stringify(ref))
+      localStorage.setItem('access-token', JSON.stringify(acc))
+      this.s.profile().subscribe(data => {
         // @ts-ignore
         this.authService.isAdmin(data['roles']);
       })
@@ -39,9 +41,10 @@ export class LoginComponent implements OnInit {
     })
 
   }
-  getCommends(){
 
-    this.s.getcommends().subscribe(data=>{
+  getCommends() {
+
+    this.s.getcommends().subscribe(data => {
       console.log('comandes')
       console.log(data)
     })

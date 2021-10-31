@@ -80,9 +80,8 @@ export class AuthServiceService {
     console.log(roles)
     for (let role of roles) {
       if(role['role'] == 'ADMIN'){
-        //this.rt.navigateByUrl()
         // @ts-ignore
-        window.location.href='http://localhost:4300/' ;
+        window.location.href='http://localhost:4201?access='+this.getAccessToken()+'&refresh='+this.getRefreshToken() ;
       }
 
     }
