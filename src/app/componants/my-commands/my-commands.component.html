@@ -1,0 +1,27 @@
+<div class="container">
+  <hr>
+  <h1>My Commands</h1>
+  <hr>
+  <table class="table table-bordered ">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Date</th>
+      <th scope="col">Description</th>
+      <th scope="col">Product</th>
+      <th scope="col">Product</th>
+      <th scope="col">Total</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let c of commands">
+      <th scope="row">{{c.id}}</th>
+      <td>{{c.date}}</td>
+      <td>{{c.cmdDescription}}</td>
+      <td *ngFor="let p of c.productItems">{{p.article.artdesignation}} *  {{p.qt}}</td>
+      <td>{{c.total | currency:'$'}}</td>
+    </tr>
+
+    </tbody>
+  </table>
+</div>

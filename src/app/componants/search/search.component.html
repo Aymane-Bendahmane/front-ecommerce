@@ -1,0 +1,53 @@
+<!-- Section -->
+<div class="section">
+  <!-- container -->
+  <div class="container">
+    <!-- row -->
+    <div class="row">
+
+      <div class="col-md-12">
+        <div class="section-title text-center">
+          <h3 class="title">{{'Category : ' +cat}}</h3>
+        </div>
+      </div>
+
+      <!-- product -->
+      <div class="col-md-3 col-xs-6" *ngFor="let article of articles" >
+        <div class="product " >
+          <div class="product-img">
+            <img src="{{host+'/photoProduct/'+article.id}}" alt="" (click)="service.goArticle(article.id)">
+            <div class="product-label">
+              <span class="sale">-30%</span>
+              <span class="new">NEW</span>
+            </div>
+          </div>
+          <div class="product-body">
+            <p class="product-category">{{article.category.catNom }}</p>
+            <h3 class="product-name"><a href="#">{{article.artdesignation}}</a></h3>
+            <h4 class="product-price">{{article.prix | currency:'$'}}
+              <del class="product-old-price">{{article.prix +100 | currency:'$'}}</del>
+            </h4>
+            <div class="product-rating" >
+              <i class="fa fa-star" ></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+            </div>
+
+          </div>
+          <div class="add-to-cart">
+            <button class="add-to-cart-btn" (click)="addToCaddy(article)"><i class="fa fa-shopping-cart"></i> add to
+              cart
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- /product -->
+
+    </div>
+    <!-- /row -->
+  </div>
+  <!-- /container -->
+</div>
+<!-- /Section -->
