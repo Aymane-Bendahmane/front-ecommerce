@@ -9,6 +9,8 @@ import { ThankyouComponent } from './componants/thankyou/thankyou.component';
 import { CheckoutComponent } from './componants/checkout/checkout.component';
 import {ListproductComponent} from "./componants/listproduct/listproduct.component";
 import {LoginComponent} from "./componants/login/login.component";
+import {MyCommandsComponent} from "./componants/my-commands/my-commands.component";
+import {SearchComponent} from "./componants/search/search.component";
 const routes: Routes = [
   {
     path:'', component : HomeComponent
@@ -33,6 +35,11 @@ const routes: Routes = [
   },
   {
     path:'login',component:LoginComponent
+  },
+  {
+    path:'mycommands' , component:MyCommandsComponent
+  },{
+  path:'search/:keyword' ,component:SearchComponent
   }
 ];
 

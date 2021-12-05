@@ -39,4 +39,9 @@ export class HeaderComponent implements OnInit {
   logout() {
     this.lg.Logout()
   }
+
+  submitRating(v: any) {
+    console.log("heeeeeeeeeeeeeeeeeeere" + v.value.keyword)
+    this.r.navigateByUrl('/search/'+v.value.keyword)
+  }
 }

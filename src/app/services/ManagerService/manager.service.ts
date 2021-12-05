@@ -56,4 +56,12 @@ export class ManagerService {
   submitRating(body:any) {
     return this.http.post(Environment.host + '/saveRating',body)
   }
+
+  mycommands() {
+    return this.http.get(Environment.host + '/mycommands')
+  }
+
+  search(key: any) {
+    return this.http.get(Environment.host + '/search/'+key)
+  }
 }

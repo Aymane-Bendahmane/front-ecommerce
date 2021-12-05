@@ -16,6 +16,9 @@ import {ListproductComponent} from "./componants/listproduct/listproduct.compone
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { LoginComponent } from './componants/login/login.component';
 import {InterceptorService} from "./services/Authentication/interceptor.service";
+import {MyCommandsComponent} from "./componants/my-commands/my-commands.component";
+import { SearchComponent } from './componants/search/search.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +31,8 @@ import {InterceptorService} from "./services/Authentication/interceptor.service"
     CheckoutComponent,
     ListproductComponent,
     LoginComponent,
-
+    MyCommandsComponent,
+    SearchComponent
 
   ],
   imports: [
